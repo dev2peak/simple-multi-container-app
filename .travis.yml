@@ -8,7 +8,7 @@ before_install:
     # Using development build for testing. Note prefixing 'q' for test-builds
     - docker build -t dev2peak/qfib-client -f ./client/Dockerfile.dev ./client
 
-scripts:
+script:
     # Verifying only the client tests (as a sample, add others here)
     - docker run -e CI=true dev2peak/qfib-client npm test
 
