@@ -1,0 +1,29 @@
+language: generic
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    # Using development build for testing. Note prefixing 'q' for test-builds
+    - docker build -t dev2peak/qfib-client -f ./client/Dockerfile.dev ./client
+
+scripts:
+    # Verifying only the client tests (as a sample, add others here)
+    - docker run -e CI=true dev2peak/qfib-client npm test
+
+after_success:
+    # Create the production builds for various components
+    - docker build -t dev2peak/fib-client ./client
+    - docker build -t dev2peak/fib-api ./server
+    - docker build -t dev2peak/fib-gateway ./gateway
+    - docker build -t dev2peak/fib-worker ./worker
+
+    # Docker Hub Access
+    - echo "$DOCKER_ACCESS_KEY" | docker login -u "$DOCKER_ID" --password-stdin
+
+    # Push Images to docker-hub
+    - docker push dev2peak/fib-client
+    - docker push dev2peak/fib-api
+    - docker push dev2peak/fib-gateway
+    - docker push dev2peak/fib-worker
