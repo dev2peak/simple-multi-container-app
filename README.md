@@ -1,4 +1,6 @@
-# Multi-container Application
+[![Build Status](https://travis-ci.org/dev2peak/simple-multi-container-app.svg?branch=master)](https://travis-ci.org/dev2peak/simple-multi-container-app)
+
+# Multi-container Application 
 
 ## Client
 
