@@ -2,6 +2,10 @@
 
 # Multi-container Application 
 
+This a sample application, using Fibonacci number generation, as a functionality.
+
+The Developer version of the same, uses the docker-compose.yml and runs locally on Docker Desktop, while the production version is planned to use AWS Elastic Beanstalk for it's deployment and exection.
+
 ## Client
 
 A simple React application, serving the UI and handling user interactions, and communicating with the Server.
